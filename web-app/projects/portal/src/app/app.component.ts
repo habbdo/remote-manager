@@ -1,19 +1,22 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
-import { ToolbarComponent } from '@app/ui';
+import { NavigationComponent } from '@app/ui';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, ToolbarComponent],
+  imports: [RouterOutlet, NavigationComponent],
   template: `
-    <ui-toolbar color="primary">
-      <h1>Portal</h1>
-    </ui-toolbar>
-    <router-outlet />
-  `,
+    <ui-navigation [nav]="nav">
+      <router-outlet />
+    </ui-navigation>
+  `
 })
 export class AppComponent {
-  
+  nav = [
+    { label: 'Accueil', path: 'dashbord' },
+    { label: 'Clients', path: 'customers' },
+    { label: 'Employés', path: 'employees' },
+  ]
 }
