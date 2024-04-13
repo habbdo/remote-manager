@@ -1,6 +1,7 @@
 import { Component, Input, inject } from '@angular/core';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 import { AsyncPipe } from '@angular/common';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -8,7 +9,6 @@ import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
-import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'ui-navigation',
@@ -16,6 +16,7 @@ import { RouterLink } from '@angular/router';
   imports: [
     AsyncPipe,
     RouterLink,
+    RouterLinkActive,
     MatToolbarModule,
     MatButtonModule,
     MatSidenavModule,
@@ -31,7 +32,13 @@ import { RouterLink } from '@angular/router';
         <mat-toolbar></mat-toolbar>
         <mat-nav-list>
           @for(n of nav; track n.label) {
-            <a mat-list-item [routerLink]="n.path">{{ n.label }}</a>
+            <a
+              mat-list-item
+              routerLinkActive
+              #routerLinkActiveInstance="routerLinkActive"
+              [activated]="routerLinkActiveInstance.isActive"
+              [routerLink]="n.path"
+            >{{ n.label }}</a>
           }
         </mat-nav-list>
       </mat-sidenav>
