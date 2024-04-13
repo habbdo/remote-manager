@@ -8,7 +8,9 @@ import { ToolbarComponent } from '@app/ui';
   standalone: true,
   imports: [RouterOutlet, ToolbarComponent],
   template: `
-    <ui-toolbar />
+    <ui-toolbar color="primary">
+      <h1>Portal</h1>
+    </ui-toolbar>
     <router-outlet />
   `,
 })
