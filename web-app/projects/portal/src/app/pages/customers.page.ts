@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
 
+import { DataTableComponent } from '@app/ui';
+
 @Component({
   selector: 'app-customers',
   standalone: true,
-  imports: [],
+  imports: [DataTableComponent],
   template: `
-    <span>Customers Page</span>
+    <ui-data-table />
   `,
   styles: ``
 })
