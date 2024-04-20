@@ -9,7 +9,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatPaginator } from '@angular/material/paginator';
-import { debounceTime } from 'rxjs';
+import { debounceTime, tap } from 'rxjs';
 
 @Component({
   selector: 'ui-data-table',
@@ -56,6 +56,7 @@ export class DataTableComponent implements AfterViewInit {
     this.searchCtrl.valueChanges
       .pipe(
         debounceTime(300),
+        tap(() => this.paginator.firstPage()),
         takeUntilDestroyed(this.detroyRef)
       )
       .subscribe(value => {
