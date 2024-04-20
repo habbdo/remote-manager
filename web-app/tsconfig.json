@@ -20,6 +20,9 @@
     "module": "ES2022",
     "useDefineForClassFields": false,
     "paths": {
+      "@app/providers/*": [
+        "./projects/portal/src/app/providers/*"
+      ],
       "@app/ui": [
         "./projects/ui/src/public-api"
       ]
