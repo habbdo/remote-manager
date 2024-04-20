@@ -3,14 +3,14 @@ import { AsyncPipe } from '@angular/common';
 
 import { DataTableComponent } from '@app/ui';
 import { ListDataProvider } from '@app/providers/list.data-provider';
-import { FakeCustomerListDataProvider } from '@app/providers/fake-customer-list.data.provider';
+import { CustomerListDataProvider } from '@app/providers/customer-list.data.provider';
 
 @Component({
   selector: 'app-customers',
   standalone: true,
   imports: [AsyncPipe, DataTableComponent],
   providers: [
-    { provide: ListDataProvider, useClass: FakeCustomerListDataProvider}
+    { provide: ListDataProvider, useClass: CustomerListDataProvider}
   ],
   template: `
     <ui-data-table
